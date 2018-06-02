@@ -1,8 +1,6 @@
 
 var exec = require('child_process').exec;
 
-// let string;
-
 exec('mocha', ['test.js'], function(error, out, err) {
     if (error !== null) {
         console.log(error);
@@ -13,8 +11,12 @@ exec('mocha', ['test.js'], function(error, out, err) {
         tests: {}
     };
     console.log(out);
+
+    //Shortens the string from the beginning to the first double line break after a certain word (in this case 'Testing'), and then turns it into an array
     const selectedArray = out.substring(out.indexOf("^[a-zA-Z0-9]+$"), out.indexOf('\n\n', out.indexOf('Testing'))).trim().split('\n');
     console.log(selectedArray);
+
+    //Assigns values to an object based on whether the test passed or not.
     selectedArray.forEach((string, i) => {
         if (i === 0) {
             objToSend.q = string.trim();
@@ -29,20 +31,19 @@ exec('mocha', ['test.js'], function(error, out, err) {
         }
     });
 
+    // If none of the tests fail, it changes the object's passed value to true
     if (!Object.values(objToSend.tests).includes(false)) {
         objToSend.passed = true;
     }
 
     console.log(objToSend);
+
+    //Puts object into JSON object
     const jsonObject = JSON.stringify(objToSend);
     console.log(jsonObject);
 
     return jsonObject;
 });
-
-// console.log(string);
-
-// var String=string.substring(string.lastIndexOf("Testing")+1,string.lastIndexOf("passing"));
 
 // const { spawn } = require('child_process');
 
