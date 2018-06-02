@@ -12,8 +12,8 @@ exec('mocha', ['test.js'], function(error, out, err) {
     };
     console.log(out);
 
-    //Shortens the string from the beginning to the first double line break after a certain word (in this case 'Testing'), and then turns it into an array
-    const selectedArray = out.substring(out.indexOf("^[a-zA-Z0-9]+$"), out.indexOf('\n\n', out.indexOf('Testing'))).trim().split('\n');
+    //Shortens the string from the beginning to the second double line break, and then turns it into an array
+    const selectedArray = out.substring(out.indexOf("^[a-zA-Z0-9]+$"), out.indexOf('\n\n', out.indexOf('\n\n') + 2)).trim().split('\n');
     console.log(selectedArray);
 
     //Assigns values to an object based on whether the test passed or not.
