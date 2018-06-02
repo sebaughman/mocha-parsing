@@ -1,0 +1,24 @@
+{
+  "name": "docker-proto",
+  "version": "1.0.0",
+  "main": "code.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebaughman/mocha-parsing.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sebaughman/mocha-parsing/issues"
+  },
+  "homepage": "https://github.com/sebaughman/mocha-parsing#readme",
+  "description": ""
+}
