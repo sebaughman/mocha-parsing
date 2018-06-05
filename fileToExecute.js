@@ -17,11 +17,16 @@ exec('mocha', ['test.js'], function(error, out, err) {
     console.log(selectedArray);
 
     //Assigns values to an object based on whether the test passed or not.
+    // use trim to find if character at beginning of string is a number
     selectedArray.forEach((string, i) => {
+        //get rid of the white stuff at the beginning of each string
+        const newString = string.trim();
+
         if (i === 0) {
-            objToSend.q = string.trim();
+            objToSend.q = newString;
         }
-        else if (!/\d/.test(string)) {
+        // sees if first character of trimmed string is a number
+        else if (!/\d/.test(newString.charAt(0))) {
             const id = `T${i}`;
             objToSend.tests[id] = true;
         }
